@@ -1,11 +1,12 @@
 import os
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return '<strong>Hello World!</strong>'
+    return page('<strong>Hello World!</strong>')
 
 @app.route('/chris')
 def chris():
@@ -20,3 +21,12 @@ def show_user_profile(username):
 
 def page(html):
 	return render_template('header.html') + html + render_template('footer.html')
+
+@app.route('/template')
+def template():
+	return page('test test test')
+
+@app.route('/about')
+def about():
+	return page('this is a page about stuff!')
+
